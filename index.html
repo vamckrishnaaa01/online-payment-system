@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Online Payment System - secure payment experience demo" />
+  <title>PayFlow — Online Payment System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="PayFlow home"><span class="brand-mark">P</span><span>PAYFLOW</span></a>
+    <nav><a href="#home">Home</a><a href="#pay">Pay</a><a href="#history">History</a><a href="#security">Security</a></nav>
+    <button class="ghost-btn" data-scroll="#pay">Make Payment</button>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-glow"></div><div class="hero-grid"></div>
+      <p class="eyebrow">NEXT-GENERATION PAYMENT INTERFACE</p>
+      <h1>PAYMENTS<br><span>WITHOUT FRICTION.</span></h1>
+      <p class="hero-copy">A clean, fast and secure payment experience inspired by the visual direction of the supplied reference.</p>
+      <div class="hero-actions"><button class="primary-btn" data-scroll="#pay">INITIATE PAYMENT <span>↗</span></button><button class="text-btn" data-scroll="#security">Explore Security ↓</button></div>
+      <div class="status-pill"><span class="pulse"></span> SYSTEM ONLINE · ENCRYPTED</div>
+    </section>
+    <section class="stats"><div><strong>₹24.8K</strong><span>Demo volume</span></div><div><strong>99.9%</strong><span>Availability target</span></div><div><strong>256-bit</strong><span>Encryption concept</span></div><div><strong>&lt; 2s</strong><span>UI response goal</span></div></section>
+    <section class="payment-layout" id="pay">
+      <div class="section-copy"><p class="eyebrow">01 / PAYMENT</p><h2>Send money<br><span>securely.</span></h2><p>Enter the recipient and amount. This frontend is a portfolio-ready demo and does not process real money.</p><div class="secure-line"><span>▣</span> Card details are never stored in this demo.</div></div>
+      <form class="payment-card" id="paymentForm" novalidate>
+        <div class="card-head"><div><span class="mini-label">PAYMENT SESSION</span><h3>New transfer</h3></div><span class="session">#PF-<span id="sessionId"></span></span></div>
+        <label>Recipient name<input type="text" id="recipient" placeholder="e.g. Alex Johnson" required /></label>
+        <label>Recipient account / UPI<input type="text" id="account" placeholder="alex@upi or account reference" required /></label>
+        <div class="two-col"><label>Amount<div class="input-prefix"><span>₹</span><input type="number" id="amount" min="1" step="0.01" placeholder="0.00" required /></div></label><label>Currency<select id="currency"><option>INR</option><option>USD</option><option>EUR</option></select></label></div>
+        <label>Payment method<div class="methods"><button type="button" class="method active" data-method="UPI">UPI <small>instant</small></button><button type="button" class="method" data-method="CARD">Card <small>demo</small></button><button type="button" class="method" data-method="NETBANKING">Netbanking <small>demo</small></button></div></label>
+        <button class="primary-btn full" type="submit">REVIEW PAYMENT <span>→</span></button><p class="form-note">Demo only · No real transaction will be initiated.</p>
+      </form>
+    </section>
+    <section class="security" id="security"><div><p class="eyebrow">02 / SECURITY</p><h2>Built around<br><span>trust.</span></h2></div><div class="security-grid"><article><span>01</span><h3>Encrypted flow</h3><p>UI patterns communicate a secure, deliberate transaction journey.</p></article><article><span>02</span><h3>Validation first</h3><p>Client-side validation catches incomplete payment data before review.</p></article><article><span>03</span><h3>Transparent status</h3><p>Every demo transaction receives a clear success or failure state.</p></article></div></section>
+    <section class="history" id="history"><div class="history-head"><div><p class="eyebrow">03 / HISTORY</p><h2>Recent activity.</h2></div><button class="text-btn" id="clearHistory">Clear demo history</button></div><div id="historyList" class="history-list"></div></section>
+  </main>
+  <footer><span>PAYFLOW / ONLINE PAYMENT SYSTEM</span><span>FRONTEND DEMO · JAVA SPRING BOOT READY</span></footer>
+  <div class="modal" id="reviewModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="close" data-close aria-label="Close">×</button><p class="eyebrow">CONFIRMATION</p><h2>Review <span>payment.</span></h2><div id="reviewContent"></div><div class="modal-actions"><button class="ghost-btn" data-close>Edit</button><button class="primary-btn" id="confirmPayment">CONFIRM DEMO PAYMENT <span>→</span></button></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
